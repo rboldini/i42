@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF6108EF27C264D9000F4AFD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6108EE27C264D9000F4AFD /* Utils.swift */; };
+		AF6108F127C28F1D000F4AFD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6108F027C28F1D000F4AFD /* HomeView.swift */; };
 		AF9AB7FD27C25C4800AC9382 /* i42App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB7FC27C25C4800AC9382 /* i42App.swift */; };
 		AF9AB7FF27C25C4800AC9382 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB7FE27C25C4800AC9382 /* ContentView.swift */; };
 		AF9AB80127C25C4B00AC9382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9AB80027C25C4B00AC9382 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 		AF9AB80E27C25C4B00AC9382 /* i42Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB80D27C25C4B00AC9382 /* i42Tests.swift */; };
 		AF9AB81827C25C4B00AC9382 /* i42UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB81727C25C4B00AC9382 /* i42UITests.swift */; };
 		AF9AB81A27C25C4B00AC9382 /* i42UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB81927C25C4B00AC9382 /* i42UITestsLaunchTests.swift */; };
+		AF9AB82727C25EB200AC9382 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB82627C25EB200AC9382 /* LoginView.swift */; };
+		AF9AB82927C25F1100AC9382 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB82827C25F1100AC9382 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF6108EE27C264D9000F4AFD /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		AF6108F027C28F1D000F4AFD /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AF9AB7F927C25C4800AC9382 /* i42.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = i42.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9AB7FC27C25C4800AC9382 /* i42App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i42App.swift; sourceTree = "<group>"; };
 		AF9AB7FE27C25C4800AC9382 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +50,8 @@
 		AF9AB81327C25C4B00AC9382 /* i42UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = i42UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF9AB81727C25C4B00AC9382 /* i42UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i42UITests.swift; sourceTree = "<group>"; };
 		AF9AB81927C25C4B00AC9382 /* i42UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = i42UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AF9AB82627C25EB200AC9382 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AF9AB82827C25F1100AC9382 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,10 @@
 				AF9AB7FE27C25C4800AC9382 /* ContentView.swift */,
 				AF9AB80027C25C4B00AC9382 /* Assets.xcassets */,
 				AF9AB80227C25C4B00AC9382 /* Preview Content */,
+				AF9AB82627C25EB200AC9382 /* LoginView.swift */,
+				AF9AB82827C25F1100AC9382 /* CardView.swift */,
+				AF6108EE27C264D9000F4AFD /* Utils.swift */,
+				AF6108F027C28F1D000F4AFD /* HomeView.swift */,
 			);
 			path = i42;
 			sourceTree = "<group>";
@@ -257,7 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6108EF27C264D9000F4AFD /* Utils.swift in Sources */,
+				AF9AB82727C25EB200AC9382 /* LoginView.swift in Sources */,
 				AF9AB7FF27C25C4800AC9382 /* ContentView.swift in Sources */,
+				AF6108F127C28F1D000F4AFD /* HomeView.swift in Sources */,
+				AF9AB82927C25F1100AC9382 /* CardView.swift in Sources */,
 				AF9AB7FD27C25C4800AC9382 /* i42App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
