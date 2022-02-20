@@ -16,7 +16,7 @@ struct LoginView: View {
                 Image(colorScheme == .dark ? "logo.w" : "logo")
                     .resizable()
                     .frame(width: UIScreen.screenWidth * 0.9, height: UIScreen.screenWidth * 0.9, alignment: .center)
-                Button(action: { }) {
+                Button(action: {  }) {
                     Text("Login with Intra").frame(width: UIScreen.screenWidth * 0.9, height: 100, alignment: .center)
                         .background(.ultraThinMaterial)
                         .background(.green)
@@ -33,6 +33,7 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             LoginView()
+                .environmentObject(Network())
         }
     }
 }
