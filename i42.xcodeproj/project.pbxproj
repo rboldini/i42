@@ -12,6 +12,7 @@
 		AF6108F327C2E9EB000F4AFD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6108F227C2E9EB000F4AFD /* Network.swift */; };
 		AF6108F527C2EC1F000F4AFD /* PersonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6108F427C2EC1F000F4AFD /* PersonalData.swift */; };
 		AF6108F727C2FF45000F4AFD /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6108F627C2FF45000F4AFD /* KeyChainHelper.swift */; };
+		AF6108FA27C308F5000F4AFD /* SimpleOAuth2 in Frameworks */ = {isa = PBXBuildFile; productRef = AF6108F927C308F5000F4AFD /* SimpleOAuth2 */; };
 		AF9AB7FD27C25C4800AC9382 /* i42App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB7FC27C25C4800AC9382 /* i42App.swift */; };
 		AF9AB7FF27C25C4800AC9382 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AB7FE27C25C4800AC9382 /* ContentView.swift */; };
 		AF9AB80127C25C4B00AC9382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF9AB80027C25C4B00AC9382 /* Assets.xcassets */; };
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6108FA27C308F5000F4AFD /* SimpleOAuth2 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,9 @@
 			dependencies = (
 			);
 			name = i42;
+			packageProductDependencies = (
+				AF6108F927C308F5000F4AFD /* SimpleOAuth2 */,
+			);
 			productName = i42;
 			productReference = AF9AB7F927C25C4800AC9382 /* i42.app */;
 			productType = "com.apple.product-type.application";
@@ -236,6 +241,9 @@
 				Base,
 			);
 			mainGroup = AF9AB7F027C25C4800AC9382;
+			packageReferences = (
+				AF6108F827C308F5000F4AFD /* XCRemoteSwiftPackageReference "SimpleOAuth2" */,
+			);
 			productRefGroup = AF9AB7FA27C25C4800AC9382 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -613,6 +621,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AF6108F827C308F5000F4AFD /* XCRemoteSwiftPackageReference "SimpleOAuth2" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hadiidbouk/SimpleOAuth2";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AF6108F927C308F5000F4AFD /* SimpleOAuth2 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AF6108F827C308F5000F4AFD /* XCRemoteSwiftPackageReference "SimpleOAuth2" */;
+			productName = SimpleOAuth2;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AF9AB7F127C25C4800AC9382 /* Project object */;
 }
