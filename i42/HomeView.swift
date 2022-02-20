@@ -19,10 +19,10 @@ struct HomeView: View {
                                 .font(.title)
                                 .padding()
                             Text("Projects")
-        //                        .padding()
                                 .font(Font.title)
                         }
                         .frame(width: UIScreen.screenWidth * 0.9, alignment: .leading)
+//                        .background(.blue)
                         VStack {
                         }
                         .frame(width: UIScreen.screenWidth * 0.9, height: UIScreen.screenHeight * 0.3, alignment: .topLeading)
@@ -33,10 +33,10 @@ struct HomeView: View {
                                 .font(.title)
                                 .padding()
                             Text("Events")
-        //                        .padding()
                                 .font(Font.title)
                         }
                         .frame(width: UIScreen.screenWidth * 0.9, alignment: .leading)
+//                        .background(.red)
                         VStack {
                         }
                         .frame(width: UIScreen.screenWidth * 0.9, height: UIScreen.screenHeight * 0.3, alignment: .topLeading)
@@ -46,7 +46,15 @@ struct HomeView: View {
                     Text("Developed by rboldini")
                         .font(.caption)
                 }
+                .navigationBarItems(
+                    leading: Image("logo") // Should be button that trigger the menu bar
+                        .resizable()
+                        .frame(width: 40, height: 40, alignment: .center),
+                    trailing: Image(systemName: "person.circle.fill")  // Should be PersonalData?.imageURL
+                        .font(.title2)
+                )
             }
+//            .background(.background)
         }
     }
 }

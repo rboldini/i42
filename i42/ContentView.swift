@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var logged = false
+    @State var logged = true
     var body: some View {
         if (logged) {
-//            HomeView()
+            HomeView()
         }
         else {
             LoginView()
