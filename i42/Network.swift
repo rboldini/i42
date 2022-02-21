@@ -10,7 +10,7 @@ import SimpleOAuth2
 import Combine
 
 class Network: ObservableObject {
-    @Published var personalData: [PersonalData] = []
+    @Published var personalData: PersonalData?
     @Published var logged = false
     
     var credentials: OAuth2Credentials?
@@ -26,11 +26,13 @@ class Network: ObservableObject {
     )
     private let account = "SET_ACCOUNT_NAME" // Something related to your app name/company
     private let service = "SET_SERVICE_NAME" // Something related to the service you want to store in keychain
+
     
     func signIn() {
         let result = KeychainHelper.standard.read(service: service, account: account, type: OAuth2Credentials.self)
         if result != nil {
             self.credentials = result
+            print(credentials as Any)
         }
         else {
             self.cancellable = authManager.signIn(with: self.request)
@@ -46,9 +48,28 @@ class Network: ObservableObject {
                         }
                 )
         }
-        self.getRequest(path: "/me")
         self.logged.toggle()
     }
+    
+    func setPersonalData(pd: PersonalData){
+        self.personalData = pd
+    }
+    
+    
+    func newRequest(path: String) async throws {
+        var endPoint = "https://api.intra.42.fr/v2"
+        endPoint = endPoint.appending(path)
+        guard let url = URL(string: endPoint) else { fatalError("Missing URL") }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "GET"
+        urlRequest.setValue( "no-cache, no-store", forHTTPHeaderField: "Cache-Control")
+        urlRequest.setValue( "Bearer \(self.credentials?.accessToken ?? "NO_TOKEN")", forHTTPHeaderField: "Authorization")
+        let (data, response) = try await URLSession.shared.data(for: urlRequest)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else { fatalError("Error while fetching data") }
+        let decodedData = try JSONDecoder().decode(PersonalData.self, from: data)
+        self.personalData = decodedData
+    }
+    
     
     func getRequest(path: String) {
         var endPoint = "https://api.intra.42.fr/v2"
@@ -73,12 +94,14 @@ class Network: ObservableObject {
                 DispatchQueue.main.async {
                     do {
                         let decodedUsers = try JSONDecoder().decode(PersonalData.self, from: data)
-                        self.personalData = decodedUsers
+                        self.setPersonalData(pd: decodedUsers)
                     } catch let error {
                         print("Error decoding: ", error)
                     }
                 }
-            } else {print("Response error code: \(response.statusCode)")}
+            } else {
+                print("Response error code: \(response.statusCode)")
+            }
         }
         dataTask.resume()
     }

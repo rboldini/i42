@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var network: Network
+    let imageError = "https://e7.pngegg.com/pngimages/419/473/png-clipart-computer-icons-user-profile-login-user-heroes-sphere.png"
     var body: some View {
         NavigationView {
             ScrollView {
@@ -44,18 +45,30 @@ struct HomeView: View {
                     }
                     Text(" ")
                     Spacer()
+                    Text(network.personalData?.image_url ?? "Missing?")
                     Text("Developed by rboldini")
                         .font(.caption)
+//                        .onAppear(perform: {() -> Void in print(network.personalData?.displayname)})
                 }
+                .navigationBarTitle(network.personalData?.displayname ?? "Missing Name")
                 .navigationBarItems(
                     leading: Image("logo") // Should be button that trigger the menu bar
                         .resizable()
                         .frame(width: 40, height: 40, alignment: .center),
-                    trailing: Image(systemName: "person.circle.fill")  // Should be PersonalData?.imageURL
-                        .font(.title2)
+                    trailing:
+                        AsyncImage(url: URL(string: network.personalData?.image_url ?? imageError), scale: 15)
+                            .cornerRadius(360)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.black, lineWidth: 0.05))
                 )
             }
-//            .background(.background)
+            .task {
+                do {
+                    try await network.newRequest(path: "/me")
+                } catch {
+                    print("Error", error)
+                }
+            }
         }
     }
 }
