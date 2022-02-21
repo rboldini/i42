@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var network: Network
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         CardView() {
@@ -16,7 +17,7 @@ struct LoginView: View {
                 Image(colorScheme == .dark ? "logo.w" : "logo")
                     .resizable()
                     .frame(width: UIScreen.screenWidth * 0.9, height: UIScreen.screenWidth * 0.9, alignment: .center)
-                Button(action: {  }) {
+                Button(action: { network.signIn() }) {
                     Text("Login with Intra").frame(width: UIScreen.screenWidth * 0.9, height: 100, alignment: .center)
                         .background(.ultraThinMaterial)
                         .background(.green)

@@ -28,20 +28,26 @@ class Network: ObservableObject {
     private let service = "SET_SERVICE_NAME" // Something related to the service you want to store in keychain
     
     func signIn() {
-        self.cancellable = authManager.signIn(with: self.request)
-            .sink( receiveCompletion: { result in
-                switch result {
-                case .failure(let error):
-                    print(error.localizedDescription)
-                default: break
-                }
-            },  receiveValue: { cred in
-                    self.credentials = cred
-                    KeychainHelper.standard.save(self.credentials, service: self.service, account: self.account)
-                    self.getRequest(path: "/me")
-                    self.logged.toggle()
-                }
-            )
+        let result = KeychainHelper.standard.read(service: service, account: account, type: OAuth2Credentials.self)
+        if result != nil {
+            self.credentials = result
+        }
+        else {
+            self.cancellable = authManager.signIn(with: self.request)
+                .sink( receiveCompletion: { result in
+                    switch result {
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    default: break
+                    }
+                },  receiveValue: { cred in
+                        self.credentials = cred
+                        KeychainHelper.standard.save(self.credentials, service: self.service, account: self.account)
+                        }
+                )
+        }
+        self.getRequest(path: "/me")
+        self.logged.toggle()
     }
     
     func getRequest(path: String) {
@@ -66,7 +72,7 @@ class Network: ObservableObject {
                 guard let data = data else { return }
                 DispatchQueue.main.async {
                     do {
-                        let decodedUsers = try JSONDecoder().decode([PersonalData].self, from: data)
+                        let decodedUsers = try JSONDecoder().decode(PersonalData.self, from: data)
                         self.personalData = decodedUsers
                     } catch let error {
                         print("Error decoding: ", error)
