@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /**
  *  This class aim to parse all necessary data from /v2/me request to Intra 42 API Server*
  *
@@ -79,7 +78,6 @@ class PersonalData: Decodable, Identifiable {
             var parent_id: String?
             var slug:String
         }
-        
     }
     
     class Achievement: Decodable, Identifiable {
@@ -196,4 +194,51 @@ class PersonalData: Decodable, Identifiable {
     }
 }
 
+
+class Events: Identifiable, Decodable, Hashable {
+    var id: Int
+    var name: String
+    var description: String
+    var location: String
+    var kind: String
+    var max_people: Int?
+    var nbr_subscribers: Int
+    var begin_at: String
+    var end_at: String
+    var campus_ids: [Int] = []
+    var cursus_ids: [Int] = []
+    var themes: [Themes] = []
+    var waitlist: Waitlist?
+    var prohibition_of_cancellation: Int?
+    var created_at: String
+    var updated_at: String
+    
+    class Themes: Identifiable, Decodable {
+        var created_at: String
+        var id: Int
+        var name: String
+        var updated_at: String
+    }
+    
+    class Waitlist: Identifiable, Decodable {
+        var created_at: String
+        var id: Int
+        var updated_at: String
+        var waitlistable_id: Int
+        var waitlistable_type: String
+    }
+    
+    static func == (lhs: Events, rhs: Events) -> Bool {
+        guard lhs.id == rhs.id
+        else { return false }
+        guard lhs.name == rhs.name
+        else { return false}
+        return true
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
+    }
+}
 
