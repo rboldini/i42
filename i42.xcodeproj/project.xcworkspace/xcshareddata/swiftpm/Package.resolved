@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SimpleOAuth2",
+        "repositoryURL": "https://github.com/hadiidbouk/SimpleOAuth2",
+        "state": {
+          "branch": "main",
+          "revision": "cdc47994e3c9d9dfb237d4943b7834e00cca0097",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var network: Network
     var body: some View {
         NavigationView {
             ScrollView {
@@ -62,5 +63,6 @@ struct HomeView: View {
 struct HomeView_Preview: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(Network())
     }
 }
